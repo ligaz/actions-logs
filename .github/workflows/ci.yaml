@@ -1,0 +1,20 @@
+name: 'CI'
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: [flyci-macos-14-m2, wingman]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make a failure
+        run: exit 1
+        working-directory: src
